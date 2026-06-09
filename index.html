@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>堀山 正雄 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>堀山 正雄 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. UMUテクノロジージャパン株式会社</a>
+  <a href="#k2">2. Ubie株式会社</a>
+  <a href="#k3">3. カイテク株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">Industry Leader（製薬・ライフサイエンス業界）</span><span class="badge badge-blue">非上場</span></div>
+  <div class="co-name">UMUテクノロジージャパン株式会社</div>
+  <div class="co-url"><a href="https://umujapan.co.jp/" target="_blank">https://umujapan.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都新宿区新宿 4-1-6 JR新宿ミライナタワー 18階</td></tr><tr><th>設立</th><td>2018年2月</td></tr><tr><th>従業員数</th><td>少数精鋭組織</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>元Googleトップマネージャーが創設した同社。AIによる学習プラットフォームを展開</li><li>昨年度比2－3倍のペースで成長、収益力も抜群で資金も潤沢</li><li>グローバルで2億人以上に活用され、日本では28,000社が利用</li><li>顧客は流通小売や製薬、金融（銀行保険）などエンタープライズ企業が中心</li><li>NTTや船井総研など大手出身者も多数在籍</li><li>成果に応じて年俸に反映され、入社後収入を上げている方も多数</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">人の可能性を最大化させる「学び」のリーディングカンパニーとして、最新のテクノロジーを駆使し、人や組織にイノベーションを起こすための学習プラットフォーム「UMU（ユーム）」を提供しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>人の可能性を最大化させる「学び」のリーディングカンパニーとして、最新のテクノロジーを駆使し、人や組織にイノベーションを起こすための学習プラットフォーム「UMU（ユーム）」を提供しています。『UMU（ユーム）』は「教わる・練習する・学ぶ・応用する」というプロセスを科学的に実践できる学習プラットフォームで、特に注目すべきは、AIリテラシーとプロンプトリテラシーに関するコンテンツです。</p><p>生成AIの時代において全従業員がAIを効果的に活用し、生産性を向上させることを目的としたAIリテラシーコースは、組織全体の戦略的競争力を強化することができると期待されています。</p><p>現在グローバルでは2億人以上に活用され、日本では、少数精鋭組織でありながら、立ち上げ7年目で28,000社が利用するプロダクトへと成長。日本生命、パナソニック、アステラス製薬、ワコールをはじめとするエンタープライズ企業を中心に導入実績が進んでいます。2022年には国内最大級のSaaSレビューサイト「ITreview」にて、約5000製品の中から1位に輝くなど高く評価されています。</p><p>拠点は東京と大阪にあり、グローバル本社は米国ポートランド、開発拠点は中国の北京にあります。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 Industry Leader（製薬・ライフサイエンス業界）</div>
+          <div class="job-preview">製薬・ライフサイエンス業界におけるUMUのビジネス全体の事業責任者として、AIによる業界変革を牽引</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>募集背景・ミッション</strong></p><p>UMUは現在、LLM（大規模言語モデル）の台頭により、歴史的転換点にいます。このパラダイムシフトを牽引するため、各業界に特化した「バーティカル（垂直型）」組織を構築しています。本ポジションは、単なる営業チームのリーダーではありません。製薬・ライフサイエンス業界におけるUMUのビジネス全体の「オーナー」として組織全体を統合し、AIによる業界変革のビジネスプランを策定・実行する事業責任者クラスのリーダーシップが求められます。</p><p><strong>仕事内容</strong></p><p>単なる営業活動の枠を超え、製薬・ライフサイエンス業界に向けた事業開発の立案から、サービス提供に至る一連の流れすべてにおいて、主導的な役割を果たしていただきます。</p><ul><li><strong>機能の垂直統合とP&L管理</strong>：マーケティング、IS（インサイドセールス）、AE（アカウントエグゼクティブ）、AM/CSといった各機能を業界軸で垂直統合し、製薬・ライフサイエンス業界への市場浸透プランに全責任を持ちます。</li><li><strong>大規模組織の構築とマネジメント</strong>：業界特化型チームを統括し、その下に複数のセクターリーダーを配置・育成する組織設計を行います。</li><li><strong>業界に向けた発信と影響力の確立</strong>：AI Expoや業界の大型カンファレンスに登壇し、製薬・ライフサイエンス業界×AIのトップランナーとしてメディアや顧客へ発信します。単なる宣伝ではなく「これからの製薬・ライフサイエンス業界はどうあるべきか」というビジョンを提示し、業界全体のスタンダードを作っていく役割を担います。</li><li><strong>経営層との強固なリレーションシップ構築</strong>：国内外の主要製薬・ライフサイエンスグループの経営層（CxO）と密な連携を図り、中長期的な経営課題に対するソリューションを提案します。数十億円規模の包括的な戦略提携を主導し、業界の未来を共創するパートナーとしての地位を確立します。</li></ul><p><strong>必須スキル</strong></p><ul><li><span class='tag tag-must'>MUST</span>エンタープライズ領域における実績：大手企業をターゲットとした戦略的なアプローチを通じ、インパクトあるビジネスを成立・推進させた経験。</li><li><span class='tag tag-must'>MUST</span>シニア・セールスディレクター以上の経験：部門の垣根を越えた数十名規模の連合チームを率い、各領域のリーダーを育成・マネジメントしながら、事業をダイナミックに推進した経験。</li><li><span class='tag tag-must'>MUST</span>業界特化のビジネスプラン策定能力： 製薬・ライフサイエンス業界の構造的課題を深く理解し、トップダウンでの事業戦略をゼロから描き、実行できる能力。</li><li><span class='tag tag-must'>MUST</span>市場を動かす発信力： 業界のスタンダードを塗り替えるビジョンを発信し、自らの言葉で顧客を惹きつける「オピニオンリーダー」としての影響力。</li><li><span class='tag tag-must'>MUST</span>日本語ネイティブレベル：日本語を用いた高度な交渉、商談、および経営層との合意形成が可能な方。</li></ul><p><strong>歓迎スキル</strong></p><ul><li><span class='tag tag-want'>WANT</span>AI・テクノロジーへの熱量： 技術的なスキルの有無以上に、AIがビジネスをどう変えるかというビジョンを持ち、常に最新動向を自ら収集・考察できる方。</li><li><span class='tag tag-want'>WANT</span>グローバルな環境への適応力： グローバル企業での実務経験、または多様な文化やスピード感の中でビジネスを推進した経験。</li><li><span class='tag tag-want'>WANT</span>SaaS、ITサービス、または組織開発支援の領域でのビジネス経験。</li></ul><p><strong>年俸</strong>：1500万円〜2500万円（年俸制、インセンティブ別途）</p>
+        <div class="meta-pills"><span class="pill">📍 東京・大阪</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://umujapan.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://youtu.be/Yxj3zU7t0qY" target="_blank">📹 3分で分かるUMUの魅力</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">Bizdev/事業開発 責任者候補</span><span class="badge badge-blue">非上場</span></div>
+  <div class="co-name">Ubie株式会社</div>
+  <div class="co-url"><a href="https://ubie.life/" target="_blank">https://ubie.life/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都中央区日本橋本町三丁目8番4号 日本橋ライフサイエンスビルディング4（5F受付）</td></tr><tr><th>設立</th><td>2017年5月</td></tr><tr><th>従業員数</th><td>非公開</td></tr><tr><th>累計資金調達額</th><td>180億円</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>「健康が空気のように当たり前な世界をつくる」をテーマに、toCだけでなくtoB事業でも急成長中</li><li>製薬企業向けtoB事業がすごく伸びており、武田薬品工業との連携もスタート</li><li>男性の育休取得率も高く、性差なく保育園お迎えの中抜けなどOK</li><li>コンサルファームや省庁出身者も複数名在籍</li><li>ストックオプションは全社員が付与対象（退職後もストックオプションを保有可）</li><li>2025年5月にはGoogleからの出資も発表</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「テクノロジーで人々を適切な医療に案内する」をミッションに掲げ、医師とエンジニアが2017年5月に創業したヘルステックスタートアップです。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「テクノロジーで人々を適切な医療に案内する」をミッションに掲げ、医師とエンジニアが2017年5月に創業したヘルステックスタートアップです。現在は、月間1200万人に利用される生活者向けサービスの症状検索エンジンと、全国1800件超で使われる医療機関向けサービス、得られるデータを活用した製薬企業向けのコンサルティング事業という3領域でサービス提供しており、2022年より米国事業も展開を開始しています。</p><p>ユビー生成AIはUbieの中でも事業を大きくスケールさせる重点サービスに位置づけており、病院に対する生成AIサービスとして業界でいち早く提供を開始しています。既に100病院以上に導入され、大学病院など大規模病院も含めて導入実績はNo.1です。</p><p>2025年5月には、累計資金調達額180億円を突破と発表。これまでに発表いたしましたGoogleからの出資参画（2024年10月発表）をはじめ、日本郵政キャピタル株式会社、株式会社NTTドコモ、株式会社セブン-イレブン・ジャパン等の国内外のリーディングカンパニー、ならびに日本政策金融公庫、株式会社商工組合中央金庫等からの支援によります。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 Bizdev/事業開発 責任者候補 【ファーマイノベーション事業本部】</div>
+          <div class="job-preview">製薬業界における市場とプロダクトの創造、事業スケール責任者として0→1から事業を牽引</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>Mission：あなたにお任せしたいこと</strong></p><p>Ubieの持つ技術・事業アセットを最大限に活用し、「市場」と「プロダクト」そのものを新たに創造し、事業をスケールさせることです。これはセールスやマーケティングといった特定の領域に閉じず、プロダクト開発から組織開発までを越境してリードし、事業家としてUbieの未来を切り拓く挑戦です。</p><p><strong>主なミッション</strong></p><ul><li><strong>市場を創造する</strong>：現在市場に存在しないソリューションを、Ubieのアセットを組み合わせてゼロから形にします。「どのデータを使えば顧客のどの課題が解けるのか」を探索し、プラットフォームを活用した新しいアプローチを企画・立案。</li><li><strong>プロダクトを進化させる</strong>：顧客の最前線で得たインサイトを、プロダクト開発チームにフィードバックし、サービスの価値向上をリードします。</li><li><strong>新たな変革を実装する</strong>：月間1,200万人が利用するUbieのプラットフォームと独自の症状検索データを武器に、製薬企業のビジネスモデルそのものをアップデートします。</li><li><strong>事業を牽引する組織を創る</strong>：事業の成長と変革をドライブするため、採用、育成、組織ガバナンスの設計・実行までを担います。</li></ul><p><strong>必須スキル</strong></p><ul><li><span class='tag tag-must'>MUST</span>事業開発または戦略コンサルティングの実務経験（3年以上）</li><li><span class='tag tag-must'>MUST</span>不確実性の高い環境下で、0→1または1→10のフェーズにおける事業・サービス開発をリードした経験</li><li><span class='tag tag-must'>MUST</span>複雑なビジネス上の論点を構造化・整理し、仮説構築から検証、解決策の策定までを自走して完遂できる能力</li><li><span class='tag tag-must'>MUST</span>マルチステークホルダーとの合意形成・推進力</li><li><span class='tag tag-must'>MUST</span>企業の経営層や部門長とのリレーション構築、および社内の多職種を巻き込み、プロジェクトを前進させるリーダーシップ</li><li><span class='tag tag-must'>MUST</span>高度な論理的思考力とストーリーテリングスキル</li><li><span class='tag tag-must'>MUST</span>顧客の経営アジェンダを深く理解し、本質的な課題を特定した上で、説得力のあるストーリーラインを構築できる能力</li><li><span class='tag tag-must'>MUST</span>データに基づいた意思決定スキル</li></ul><p><strong>歓迎スキル</strong></p><ul><li><span class='tag tag-want'>WANT</span>製薬・ヘルスケア業界への深い知見</li><li><span class='tag tag-want'>WANT</span>データ・テクノロジー・AIへの高いリテラシー</li><li><span class='tag tag-want'>WANT</span>Python、SQL、BIツール（Tableau、Redash等）を用いたデータ分析、およびそれに基づくプロダクト改善の経験</li><li><span class='tag tag-want'>WANT</span>生成AI（LLM）を活用した業務効率化や、AIを組み込んだ新規プロダクトのPoCをリードした経験</li><li><span class='tag tag-want'>WANT</span>組織開発およびマネジメント経験</li><li><span class='tag tag-want'>WANT</span>数名から数十名規模のチームマネジメント、および採用、育成、KPI設計を通じた組織のスケールアップ経験</li><li><span class='tag tag-want'>WANT</span>グローバルな環境でのビジネス遂行能力</li></ul><p><strong>年収</strong>：800~1,500万円 + ストックオプション(全員付与)</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 リモート可（週2日出社推奨）</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://ubie.life/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://ubie-coporate.notion.site/Ubie-Corporate-3f43ebe962a944e8a53e1a7434551ead" target="_blank">📄 Corporate紹介</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">事業開発</span><span class="badge badge-blue">非上場</span></div>
+  <div class="co-name">カイテク株式会社</div>
+  <div class="co-url"><a href="https://corp.caitech.co.jp/" target="_blank">https://corp.caitech.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都新宿区新宿1-23-1 THE PORTAL 新宿御苑 2F</td></tr><tr><th>設立</th><td>2018年2月</td></tr><tr><th>従業員数</th><td>約52名（役員含む）</td></tr><tr><th>上場区分</th><td>IPO準備中</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>2018年創業で「Technology Fast 50 2025 Japan」日本1位を受賞（成長率1,616％）</li><li>直近3期連続で黒字化、営業利益率は10％超と高収益体質</li><li>介護・医療領域で圧倒的シェアNo.1（タイミー社の約4倍）のインフラを構築</li><li>登録ワーカー約100万人、登録施設数20,000所以上の国内最大級プラットフォーム</li><li>少数精鋭で高成長を実現する圧倒的な生産性と利益体質</li><li>社会課題解決に長期で取り組める価値のあるテーマ</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「2050年に世界一幸せな超高齢社会をつくる」というビジョンのもと、介護・医療領域の人材不足解消に挑む2018年設立のHRテック企業で、介護・医療・看護領域に特化した単発・スポットワークマッチングサービス「カイテク」を展開しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「2050年に世界一幸せな超高齢社会をつくる」というビジョンのもと、介護・医療領域の人材不足解消に挑む2018年設立のHRテック企業で、介護・医療・看護領域に特化した単発・スポットワークマッチングサービス「カイテク」を展開しています。</p><p>慢性的な人材不足という社会構造課題に対し、有資格者限定という独自モデルでアプローチしている点や勤務後5分以内の即時ペイメントや、足りないシフト枠をスポットワークと連携する仕組みなど、現場起点のプロダクト開発を進め、導入事業所は約2.1万、アプリDLは約118万人まで拡大。</p><p>業界内では圧倒的なシェアNo.1（タイミー社の約4倍）のインフラとして独走状態をキープ、そして直近3期連続黒字、営業利益率10％超と、成長性と収益性を両立している点も特徴でIPOを目指しています。</p><p>デロイトトーマツグループが2026年1月に発表したテクノロジー・メディア・通信業界における成長率のランキング「Technology Fast 50 2025 Japan」において、過去3決算期の収益（売上高）に基づく成長率1,616％を記録し、見事１位を受賞！</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 事業開発</div>
+          <div class="job-preview">新規事業立ち上げ・M&A戦略を主導し、介護・医療・福祉の総合インフラへ事業拡大を推進</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>募集背景</strong></p><p>事業ロードマップと今後の展開：「スポットワーク」から、介護・医療・福祉の総合インフラへ。</p><p>当社は現在、介護・医療現場の人材不足を解消する「スポットワーク（HR事業）」を起点に、業界のあり方を変える多角的な事業展開を加速させています。現在のフェーズ：圧倒的成長と領域拡大。現在、主軸の「スポットワーク事業」および現場の生産性を高める「SaaS（HR Tech）事業」が急速にグロースしています。</p><p>今後の展望：業界の課題を垂直・水平に解決する。単なる人材マッチングに留まらず、中長期的に「病院、障害福祉、薬局、クリニック」といった医療・福祉全般、そして「金融、M&A、ロボティクス」まで広がる事業群を立ち上げ、介護・医療に関わるすべてのステークホルダーを支えるプラットフォームを目指します。</p><p><strong>業務内容</strong></p><ul><li><strong>新規事業・経営戦略</strong><ul><li>新規事業・新部門・新プロジェクトのインキュベーション（立ち上げ）業務</li><li>全社中長期経営戦略の立案、事業計画の策定、および経営数値のモニタリング</li><li>既存事業と新規事業の部門横断的なシナジー創出・推進</li></ul></li><li><strong>M&A関連</strong><ul><li>M&A戦略の立案、ターゲット選定、デューデリジェンス、交渉、実行</li><li>M&A後のPMI（Post-Merger Integration）の計画策定および実行の最高責任</li><li>既存事業とM&A先との部門横断的なシナジー創出</li></ul></li></ul><p><strong>必須スキル・経験</strong></p><ul><li><span class='tag tag-must'>MUST</span>新規事業開発またはM&Aの経験</li><li><span class='tag tag-must'>MUST</span>オーナー経営者と対等に議論し、ビジョンを具体的な事業計画に落とし込み、実行した実績</li><li><span class='tag tag-must'>MUST</span>50億～500億、あるいはそれ以上の規模への「グロースフェーズ」を中核として牽引した実績</li><li><span class='tag tag-must'>MUST</span>M&Aの実行(ソーシングからクロージングまで)およびPMI(統合作業)のハンズオン経験</li></ul><p><strong>歓迎スキル・経験</strong></p><ul><li><span class='tag tag-want'>WANT</span>戦略コンサルティングファームにおける戦略立案、またはデューデリジェンスの経験</li><li><span class='tag tag-want'>WANT</span>PEファンドやベンチャーキャピタルでの投資およびバリューアップの経験</li><li><span class='tag tag-want'>WANT</span>財務(ファイナンス)および法務(リーガル)に関する高度な知識</li></ul><p><strong>年収</strong>：1000~2070万円</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 リモートワーク可（週2日出社）</span><span class="pill">✅ 年間休日120日</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.caitech.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが堀山 正雄 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
